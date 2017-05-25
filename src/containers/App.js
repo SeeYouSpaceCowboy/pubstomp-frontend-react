@@ -6,7 +6,7 @@ import * as Actions from '../actions/index'
 
 import ErrorComponent from '../components/Error'
 import Header from '../components/Header'
-import Session from './Session'
+import UserOverlay from './UserOverlay'
 
 const io = require('socket.io-client')
 
@@ -43,7 +43,7 @@ class App extends Component {
           show={ false }
           message={ null }
           />
-        <Session
+        <UserOverlay
           user={ user }
           actions={ actions }
           />
