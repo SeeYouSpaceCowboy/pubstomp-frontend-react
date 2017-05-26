@@ -4,6 +4,10 @@ body {
   font-family: sans-serif;
 }
 
+.invisible {
+  display: none;
+}
+
 .hidden {
   height: 0px;
   width: 0px;

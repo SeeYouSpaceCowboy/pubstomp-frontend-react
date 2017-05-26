@@ -20,9 +20,11 @@ const UserMenu = ( props ) => {
         form={ props.form }
         onChange={ props.onChange }
         onSubmit={ props.onSubmit }
+        onLogout={ props.onLogout }
         />
       <FinePrint
         show={ show }
+        user={ user }
         />
     </div>
   )
