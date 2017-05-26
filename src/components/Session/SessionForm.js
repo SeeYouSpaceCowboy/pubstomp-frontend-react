@@ -58,10 +58,11 @@ const SessionForm = ( props ) => {
   let show = props.show ? 'session-form-container' : 'no-display'
 
   let inputs = props.user ? logoutInput : loginInputs;
+  let submit = props.user ? props.onLogout : props.onSubmit;
 
   return (
     <div className={ show } >
-      <form className='session-form' onSubmit={ props.onSubmit } >
+      <form className='session-form' onSubmit={ submit } >
 
         { inputs.map( (input, i) => <Input key={ i } { ...input } />  )}
 

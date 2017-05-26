@@ -33,7 +33,7 @@ class App extends Component {
 
   render() {
     const { actions } = this.props
-    const user = this.props.user && 'username' in this.props.user ? this.props.user : null
+    const user = this.props.user && 'email' in this.props.user ? this.props.user : null
 
     // UNCOMMENT WHEN SOCKETS ARE READY TO GO
     // if ( !this.state.socket ) { return <div>Loading...</div> }

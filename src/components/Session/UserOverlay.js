@@ -13,10 +13,11 @@ const UserOverlay = ( props ) => {
       />
       <UserMenu
         show={ props.show }
+        user={ props.user }
         form={ props.form}
-        onChange={ props.onChange.bind( this ) }
-        onSubmit={ props.onSubmit.bind( this ) }
-        onLogout={ props.onLogout.bind( this ) }
+        onChange={ props.onChange }
+        onSubmit={ props.onSubmit }
+        onLogout={ props.onLogout }
         />
     </div>
   )
