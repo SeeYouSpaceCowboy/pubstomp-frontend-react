@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 
-import SessionForm from '../components/Session/SessionForm'
-import { onSubmit, onChange } from '../helpers/UserOverlay'
+import UserOverlayComponent from '../components/Session/UserOverlay'
+
+import { onSubmit, onChange, onLogout } from '../helpers/UserOverlay'
 
 class UserOverlay extends Component {
   constructor() {
@@ -9,7 +10,7 @@ class UserOverlay extends Component {
 
     this.state = {
       show: {
-
+        userMenu: true
       },
       form: {
         email: '',
@@ -17,19 +18,31 @@ class UserOverlay extends Component {
       }
     };
 
-    this.onSubmit = onSubmit.bind( this )
-    this.onChange = onChange.bind( this )
+    this.onSubmit = onSubmit.bind( this );
+    this.onChange = onChange.bind( this );
+    this.onLogout = onLogout.bind( this );
+  }
+
+  handleAvatarClick() {
+    let show = Object.assign( {}, this.state.show, { userMenu: !this.state.show.userMenu})
+
+    this.setState({
+      show: show
+    })
   }
 
   render() {
     return (
       <div>
-        <SessionForm
-          show={ true }
+        <UserOverlayComponent
+          user={ this.props.user }
+          show={ this.state.show }
           form={ this.state.form }
+          handleAvatarClick={ this.handleAvatarClick.bind( this ) }
           onChange={ this.onChange.bind( this ) }
           onSubmit={ this.onSubmit.bind( this ) }
-          />
+          onLogout={ this.onLogout.bind( this ) }
+        />
       </div>
     )
   }

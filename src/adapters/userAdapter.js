@@ -3,13 +3,13 @@ import axios from './index'
 export const userAdapter = {
 
   signUpUser: ( credentials ) => {
-    return axios.post('/users', credentials)
+    return axios.post('/signup', credentials)
       .then( response => response.data.user )
       .catch( err => console.error( err.message ) );
   },
 
   loginUser: ( credentials ) => {
-    return axios.get(`/users/${credentials.email}`)
+    return axios.get('/login')
       .then( response => response.data.user )
       .catch( err => console.error( err.message ) );
   },

@@ -21,23 +21,40 @@ describe('Session/ Login/ Signup Component', () => {
   }
 
   it('renders Input components', () => {
-    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } /> )
+    let user = null
+
+    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } user={ user } /> )
     const actual = renderer.getRenderOutput()
     const expected = 'Input'
     expect( actual ).toIncludeJSX( expected )
   })
 
   it('renders with the onSubmit function attached', () => {
-    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } /> )
-    const actual = renderer.getRenderOutput().props.children[1].props.onSubmit.name
+    let user = null
+
+    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } user={ user } /> )
+    const actual = renderer.getRenderOutput().props.children.props.onSubmit.name
     const expected = 'onSubmit'
     expect( actual ).toEqual( expected )
   })
 
-  it('renders correct text heading text', () => {
-    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } /> )
+  it('renders sign in/ sign up form if user is not signed in', () => {
+    let user = null
+
+    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } user={ user } /> )
     const actual = renderer.getRenderOutput()
-    const expected = 'Sign up or Login'
+    const expected = 'password'
+    expect( actual ).toIncludeJSX( expected )
+  })
+
+  it('renders logout button if user is signed in', () => {
+    let user = {
+      email: 'test@email.com'
+    }
+
+    renderer.render( <SessionForm onSubmit={onSubmit} form={ form } user={ user } /> )
+    const actual = renderer.getRenderOutput()
+    const expected = 'Logout'
     expect( actual ).toIncludeJSX( expected )
   })
 

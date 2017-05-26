@@ -8,7 +8,7 @@ import ErrorComponent from '../components/Error'
 import Header from '../components/Header'
 import UserOverlay from './UserOverlay'
 
-const io = require('socket.io-client')
+// const io = require('socket.io-client')
 
 class App extends Component {
   constructor() {
@@ -21,12 +21,13 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const socket = io.connect('http://localhost:4000');
+    // UNCOMMENT WHEN SOCKETS ARE READY TO GO
+    // const socket = io.connect('http://localhost:4000');
     // const socket = io.connect('https://pubstomp.herokuapp.com');
 
-    this.setState({
-      socket: socket
-    });
+    // this.setState({
+    //   socket: socket
+    // });
 
   }
 
@@ -34,7 +35,8 @@ class App extends Component {
     const { actions } = this.props
     const user = this.props.user && 'username' in this.props.user ? this.props.user : null
 
-    if ( !this.state.socket ) { return <div>Loading...</div> }
+    // UNCOMMENT WHEN SOCKETS ARE READY TO GO
+    // if ( !this.state.socket ) { return <div>Loading...</div> }
 
     return (
       <div>

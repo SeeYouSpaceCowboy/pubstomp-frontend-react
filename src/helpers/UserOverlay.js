@@ -15,6 +15,11 @@ export function onChange( event ) {
   });
 }
 
+export function onLogout( event ) {
+  event.preventDefault();
+  this.props.actions.logoutUser();
+}
+
 export function onSubmit( event ) {
   let selfThis = this;
   event.preventDefault();
