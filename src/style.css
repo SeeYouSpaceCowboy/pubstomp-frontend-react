@@ -30,29 +30,6 @@ body {
   transition: opacity .2s, transform .4s;
 }
 
-.header-container {
-  position: fixed;
-  background-color: rgba(0,0,0,0);
-  top: 0;
-  left: 0;
-  width: 100%;
-  text-align: center;
-}
-
-.header {
-  text-align: center;
-  background-color: #5B5B5B;
-  color: #fff;
-  width: 250px;
-  margin-left: calc(50% - 125px);
-  margin-top: -15px;
-  padding: 10px 0;
-  border-radius: 20px;
-  -webkit-box-shadow: 0px 6px 36px 0px rgba(0,0,0,0.5);
-  -moz-box-shadow: 0px 6px 36px 0px rgba(0,0,0,0.5);
-  box-shadow: 0px 6px 36px 0px rgba(0,0,0,0.5);
-}
-
 .avatar {
   position: fixed;
   z-index: 1000;
@@ -78,7 +55,8 @@ body {
   font-size: 48px;
   font-weight: bold;
   font-family: sans-serif;
-  padding: 0px 0px 0px 10.5px;
+  padding: 0px 0px 0px 9px;
+  line-height: 1.1;
 }
 
 .user-overlay-container {
@@ -99,6 +77,7 @@ body {
   height: 200px;
   width: 175px;
   transition: width 1s, height 1.2s, transform 1s;
+  line-height: 1.2;
 }
 
 .user-menu-heading {
