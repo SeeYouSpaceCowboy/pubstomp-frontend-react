@@ -5,7 +5,7 @@ import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
 
-import Avatar from '../../src/components/Session/Avatar'
+import Avatar from '../../src/components/UserOverlay/Avatar'
 
 const renderer = createRenderer()
 

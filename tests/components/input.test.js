@@ -5,7 +5,7 @@ import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
 
-import Input from '../../src/components/Session/Input'
+import Input from '../../src/components/UserOverlay/Input'
 
 const renderer = createRenderer()
 

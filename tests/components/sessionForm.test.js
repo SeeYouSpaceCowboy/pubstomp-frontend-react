@@ -5,7 +5,7 @@ import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
 
-import SessionForm from '../../src/components/Session/SessionForm'
+import SessionForm from '../../src/components/UserOverlay/SessionForm'
 
 const renderer = createRenderer()
 

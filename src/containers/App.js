@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Row, Col } from 'elemental'
-
-import * as Actions from '../actions/index'
 
 import UserOverlay from './UserOverlay'
 import Navbar from '../components/Navbar'
@@ -30,13 +27,9 @@ class App extends Component {
     // this.setState({
     //   socket: socket
     // });
-
   }
 
   render() {
-    const { actions } = this.props
-    const user = this.props.user && 'email' in this.props.user ? this.props.user : null
-
     // UNCOMMENT WHEN SOCKETS ARE READY TO GO
     // if ( !this.state.socket ) { return <div>Loading...</div> }
 
@@ -48,10 +41,7 @@ class App extends Component {
             <Feed />
           </Col>
           <Col sm="1/4">
-            <UserOverlay
-              user={ user }
-              actions={ actions }
-            />
+            <UserOverlay />
           </Col>
         </Row>
       </div>
@@ -65,12 +55,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = ( dispatch ) => {
-  return ({
-    actions: bindActionCreators(Actions, dispatch)
-})}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
   )( App )

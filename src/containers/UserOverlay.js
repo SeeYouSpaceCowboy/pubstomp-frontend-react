@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
-import UserOverlayComponent from '../components/Session/UserOverlay'
+import * as Actions from '../actions/index'
+
+import Avatar from '../components/UserOverlay/Avatar'
+import UserMenu from '../components/UserOverlay/UserMenu'
 
 import { onSubmit, onChange, onLogout } from '../helpers/UserOverlay'
 
@@ -32,20 +37,36 @@ class UserOverlay extends Component {
   }
 
   render() {
+    const user = this.props.user && 'email' in this.props.user ? this.props.user : null
+
     return (
-      <div>
-        <UserOverlayComponent
-          user={ this.props.user }
-          show={ this.state.show }
-          form={ this.state.form }
+      <div className='user-overlay-container'>
+        <Avatar
+          user={ user }
           handleAvatarClick={ this.handleAvatarClick.bind( this ) }
-          onChange={ this.onChange.bind( this ) }
-          onSubmit={ this.onSubmit.bind( this ) }
-          onLogout={ this.onLogout.bind( this ) }
         />
+        <UserMenu
+          show={ this.state.show }
+          user={ user }
+          form={ this.state.form}
+          onChange={ this.onChange }
+          onSubmit={ this.onSubmit }
+          onLogout={ this.onLogout }
+          />
       </div>
     )
   }
 }
 
-export default UserOverlay
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = ( dispatch ) => {
+  return ({
+    actions: bindActionCreators(Actions, dispatch)
+})}
+
+export default connect( mapStateToProps, mapDispatchToProps )(UserOverlay)
