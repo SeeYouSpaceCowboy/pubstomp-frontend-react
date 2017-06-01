@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {Row, Col} from 'elemental'
+import { Row, Col } from 'elemental'
 
 import * as Actions from '../actions/index'
 
-import ErrorComponent from '../components/Error'
-import Header from '../components/Header'
 import UserOverlay from './UserOverlay'
 import Navbar from '../components/Navbar'
 import Feed from '../containers/Feed'
@@ -45,10 +43,6 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <ErrorComponent
-          show={ false }
-          message={ null }
-          />
         <Row>
           <Col sm="3/4">
             <Feed />
