@@ -1,3 +1,14 @@
+.navbar {
+  text-align: center;
+  padding: 20px 0px;
+  border-bottom: 1px solid #ddd;
+}
+
+.feed {
+  text-align: center;
+  padding-top: 20px;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -43,11 +54,11 @@ body {
 }
 
 .avatar {
-  position: absolute;
+  position: fixed;
   z-index: 1000;
   background-color: #5B5B5B;
-  top: -5px;
-  right: -5px;
+  top: 15px;
+  right: 10px;
   cursor: pointer;
   height: 50px;
   width: 50px;
@@ -71,9 +82,9 @@ body {
 }
 
 .user-overlay-container {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  position: fixed;
+  top: 25px;
+  right: 20px;
   border: 1px solid #5B5B5B;
   background-color: #5B5B5B;
   border-radius: 15px;

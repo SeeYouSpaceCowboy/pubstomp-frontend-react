@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import {Row, Col} from 'elemental'
 
 import * as Actions from '../actions/index'
 
 import ErrorComponent from '../components/Error'
 import Header from '../components/Header'
 import UserOverlay from './UserOverlay'
+import Navbar from '../components/Navbar'
+import Feed from '../containers/Feed'
+
 
 // const io = require('socket.io-client')
 
@@ -40,15 +44,22 @@ class App extends Component {
 
     return (
       <div>
-        <Header />
+        <Navbar />
         <ErrorComponent
           show={ false }
           message={ null }
           />
-        <UserOverlay
-          user={ user }
-          actions={ actions }
-          />
+        <Row>
+          <Col sm="3/4">
+            <Feed />
+          </Col>
+          <Col sm="1/4">
+            <UserOverlay
+              user={ user }
+              actions={ actions }
+            />
+          </Col>
+        </Row>
       </div>
     )
   }
