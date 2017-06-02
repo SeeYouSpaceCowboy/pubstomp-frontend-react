@@ -5,7 +5,7 @@ import expect from 'expect'
 import expectJSX from 'expect-jsx'
 expect.extend(expectJSX)
 
-import UserMenu from '../../src/components/Session/UserMenu'
+import UserMenu from '../../src/components/UserOverlay/UserMenu'
 
 const renderer = createRenderer()
 

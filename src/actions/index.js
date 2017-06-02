@@ -1,5 +1,5 @@
-import * as userActions from './userActions'
+import * as authActions from './authActions'
 
-export const signUpUser = ( credentials ) => userActions.signUpUser( credentials )
-export const loginUser = ( credentials ) => userActions.loginUser( credentials )
-export const logoutUser = ( ) => userActions.logoutUser( )
+export const signUpUser = ( credentials ) => authActions.signUpUser( credentials )
+export const loginUser = ( credentials ) => authActions.loginUser( credentials )
+export const logoutUser = ( ) => authActions.logoutUser( )
