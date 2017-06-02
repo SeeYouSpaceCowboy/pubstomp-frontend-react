@@ -84,7 +84,7 @@ body {
   left: 0;
   width: 130px;
   text-align: center;
-  padding: 10px 0px;
+  padding: 5px 0px 10px 0px;
   opacity: 1;
   transition: opacity .5s linear .3s;
 }
@@ -93,16 +93,16 @@ body {
   color: #fff;
 }
 
-.session-form-container {
+.login-form-container {
   opacity: 1;
   transition: opacity .3s linear .5s;
   text-align: center;
-  padding: 10px;
+  padding: 0px 10px 10px 10px;
 }
 
-.session-input {
+.login-input {
   margin: 5px 25px 5px 5px;
-  width: 135px;
+  width: 145px;
   padding: 8px;
   border: 1px solid #dcdcdc;
   background-color: #5B5B5B;
@@ -114,7 +114,7 @@ body {
   cursor: pointer;
 }
 
-.session-input::placeholder {
+.login-input::placeholder {
   color: #fff;
 }
 
@@ -136,7 +136,7 @@ body {
   background-color: #4EDD6C;
 }
 
-.session-label {
+.login-label {
   color: #fff;
   font-family: arial;
   font-size: 0.8em;
@@ -147,7 +147,7 @@ body {
 .fine-print {
   margin: -5px 0 0 0;
   text-align: center;
-  font-size: .6em;
+  font-size: .8em;
   color: #fff;
 }
 

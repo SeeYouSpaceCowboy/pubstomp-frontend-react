@@ -1,6 +1,7 @@
 import React from 'react'
 
-import SessionForm from './SessionForm'
+import LoginForm from './LoginForm'
+import LogoutForm from './LogoutForm'
 import UserMenuHeading from './UserMenuHeading'
 import FinePrint from './FinePrint'
 
@@ -8,24 +9,37 @@ const UserMenu = ( props ) => {
   let user = props.user
   let show = props.show.userMenu ? 'user-menu-container' : 'hidden'
 
+  let loginForm = (
+    <div>
+      <LoginForm
+        show={ props.show.userMenu }
+        user={ user }
+        form={ props.form }
+        onChange={ props.onChange }
+        onLogin={ props.onLogin }
+        />
+      <FinePrint
+        show={ show }
+        user={ user }
+        />
+    </div>
+  )
+
+  let logoutForm = (
+    <LogoutForm
+      onLogout={ props.onLogout }
+    />
+  )
+
+  let authorizationFormComponent = props.auth ? logoutForm : loginForm
+
   return (
     <div className={ show }>
       <UserMenuHeading
         user={ user }
         show={ props.show.userMenu }
         />
-      <SessionForm
-        show={ props.show.userMenu }
-        user={ user }
-        form={ props.form }
-        onChange={ props.onChange }
-        onSubmit={ props.onSubmit }
-        onLogout={ props.onLogout }
-        />
-      <FinePrint
-        show={ show }
-        user={ user }
-        />
+      { authorizationFormComponent }
     </div>
   )
 }
