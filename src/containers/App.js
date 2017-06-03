@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Row, Col } from 'elemental'
 
 import UserOverlay from './UserOverlay'
 import Navbar from '../components/Navbar/Navbar'
 import Feed from '../containers/Feed'
+import { Row, Col } from 'react-bootstrap';
 
 class App extends Component {
 
@@ -13,13 +13,13 @@ class App extends Component {
     return (
       <div>
         <Navbar />
-        <UserOverlay />
+        {/* <UserOverlay /> */}
         <Row>
-          <Col sm="3/4">
+          <Col sm={10} smOffset={1}>
             <Feed />
           </Col>
-          <Col sm="1/4">
-          </Col>
+          {/* <Col sm={3}>
+          </Col> */}
         </Row>
       </div>
     )

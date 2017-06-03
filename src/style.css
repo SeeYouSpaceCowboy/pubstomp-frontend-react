@@ -1,7 +1,5 @@
-.navbar {
-  text-align: center;
-  padding: 20px 0px;
-  border-bottom: 1px solid #ddd;
+.material-navbar {
+  background-color: #ddd !important;
 }
 
 .feed {
