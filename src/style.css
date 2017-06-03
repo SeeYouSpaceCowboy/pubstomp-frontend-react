@@ -5,9 +5,10 @@
 .feed {
   text-align: center;
   padding-top: 20px;
+  margin-right: 0px !important;
 }
 
-body {
+/*body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -147,7 +148,7 @@ body {
   text-align: center;
   font-size: .8em;
   color: #fff;
-}
+}*/
 
 .no-select {
   -webkit-touch-callout: none; /* iOS Safari */

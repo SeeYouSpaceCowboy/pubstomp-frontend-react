@@ -18,8 +18,6 @@ const store = createStore( rootReducer, applyMiddleware( reduxThunk ) );
 injectTapEventPlugin();
 
 ReactDOM.render(
-
-
   <Provider store={ store }>
     <MuiThemeProvider>
       <App />

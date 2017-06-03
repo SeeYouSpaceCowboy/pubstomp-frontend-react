@@ -68,7 +68,6 @@ class Navbar extends Component {
           <MenuItem value={3} primaryText="Players" />
           <MenuItem value={4} disabled={true}>
             <TextField
-
               hintText="Overwatch"
               floatingLabelText="Search"
             />

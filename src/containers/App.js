@@ -12,14 +12,11 @@ class App extends Component {
 
     return (
       <div>
-        <Navbar />
-        {/* <UserOverlay /> */}
-        <Row>
-          <Col sm={10} smOffset={1}>
+            <Navbar />
+        <Row className="feed">
+          <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
             <Feed />
           </Col>
-          {/* <Col sm={3}>
-          </Col> */}
         </Row>
       </div>
     )
