@@ -48,6 +48,7 @@ class UserOverlay extends Component {
         <UserMenu
           show={ this.state.show }
           user={ user }
+          auth={ this.props.auth }
           form={ this.state.form}
           onChange={ this.onChange }
           onLogin={ this.onLogin }
@@ -60,7 +61,8 @@ class UserOverlay extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    auth: state.auth
   }
 }
 

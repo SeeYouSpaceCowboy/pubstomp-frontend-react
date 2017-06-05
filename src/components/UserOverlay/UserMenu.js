@@ -27,11 +27,12 @@ const UserMenu = ( props ) => {
 
   let logoutForm = (
     <LogoutForm
+      show={ props.show.userMenu }
       onLogout={ props.onLogout }
     />
   )
-
-  let authorizationFormComponent = props.auth ? logoutForm : loginForm
+  
+  let authenticationFormComponent = props.auth.authentication ? logoutForm : loginForm
 
   return (
     <div className={ show }>
@@ -39,7 +40,7 @@ const UserMenu = ( props ) => {
         user={ user }
         show={ props.show.userMenu }
         />
-      { authorizationFormComponent }
+      { authenticationFormComponent }
     </div>
   )
 }
