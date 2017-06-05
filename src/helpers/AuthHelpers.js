@@ -9,6 +9,7 @@ export function onChange( event ) {
 export function onLogout( event ) {
   event.preventDefault();
   this.props.actions.logoutUser();
+  this.props.history.push('/');
 }
 
 export function onLogin( event ) {
