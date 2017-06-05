@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import UserOverlay from './UserOverlay'
-import Navbar from '../components/Navbar/Navbar'
+import Navbar from '../containers/Navbar'
 import Feed from '../containers/Feed'
 import { Row, Col } from 'react-bootstrap';
 

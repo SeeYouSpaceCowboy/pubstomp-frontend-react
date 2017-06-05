@@ -7,12 +7,12 @@ import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import ActionAccountCircle from 'material-ui/svg-icons/action/account-circle'
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import { connect } from 'react-redux'
 // import {Row, Col, Button} from 'react-bootstrap'
 // import RaisedButton from 'material-ui/RaisedButton';
 // import Avatar from 'material-ui/Avatar';
 
 class Navbar extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -21,6 +21,10 @@ class Navbar extends Component {
   }
 
   handleChange = (event, index, value) => this.setState({value})
+
+  navbar() {
+    return this.props.auth.authenticated ? this.loggedInToolBar() : this.loggedOutToolBar()
+    }
 
   loggedInToolBar() {
     return (
@@ -32,7 +36,6 @@ class Navbar extends Component {
           <MenuItem value={3} primaryText="Players" />
           <MenuItem value={4} disabled={true}>
             <TextField
-
               hintText="Overwatch"
               floatingLabelText="Search"
             />
@@ -96,9 +99,15 @@ class Navbar extends Component {
 
   render() {
     return (
-      this.loggedOutToolBar()
+      this.navbar()
     )
   }
 }
 
-export default Navbar
+const mapStateToProps = (state) => {
+  return {
+    auth: state.auth
+  }
+}
+
+export default connect(mapStateToProps, null)(Navbar)
