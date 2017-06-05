@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 import UserOverlay from './UserOverlay'
 import Navbar from '../containers/Navbar'
 import Feed from '../containers/Feed'
-import { Row, Col } from 'react-bootstrap';
-
+import { Row, Col } from 'react-bootstrap'
+import SignUp from './SignUp'
 class App extends Component {
 
   render() {
@@ -18,6 +18,7 @@ class App extends Component {
             <Feed />
           </Col>
         </Row>
+        <SignUp />
       </div>
     )
   }
