@@ -1,25 +1,36 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import * as Actions from '../actions/index'
-import SignUpForm from '../components/SignUp/SignUpForm'
+
 import { Row, Col } from 'react-bootstrap'
 import {Step, Stepper, StepLabel} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
+import SignUpForm from '../components/SignUp/SignUpForm'
+import { onChange } from '../helpers/AuthHelpers'
+
 class SignUp extends Component {
 
-  state = {
-    finished: false,
-    stepIndex: 0,
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      finished: false,
+      stepIndex: 0,
+      form: {
+        email: '',
+        password: ''
+      }
+    };
+  }
 
   handleNext = () => {
     const {stepIndex} = this.state;
 
-    if(stepIndex == 0 && !this.props.auth.authenticated) {
-      this.props.signUpUser
+    if(stepIndex === 0 && !this.props.auth.authenticated) {
+      this.props.actions.signUpUser( this.state.form )
     }
 
     this.setState({
@@ -38,7 +49,7 @@ class SignUp extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return this.props.auth.authenticated ? "Account created successfully" : (<SignUpForm />)
+        return this.props.auth.authenticated ? "Account created successfully" : (<SignUpForm onChange={ onChange.bind(this)} form={ this.state.form }/>)
       case 1:
         return 'What is an ad group anyways?';
       case 2:
@@ -108,6 +119,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = ( dispatch ) => {
   return ({
     actions: bindActionCreators(Actions, dispatch)
-})}
+  })
+}
 
-export default connect( mapStateToProps, mapDispatchToProps )(SignUp)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)( SignUp )
