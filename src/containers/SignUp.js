@@ -8,7 +8,7 @@ import {Step, Stepper, StepLabel} from 'material-ui/Stepper';
 import RaisedButton from 'material-ui/RaisedButton';
 import FlatButton from 'material-ui/FlatButton';
 
-import SignUpForm from '../components/SignUp/SignUpForm'
+import SignUpForm from '../components/Auth/SignUpForm'
 import { onChange } from '../helpers/AuthHelpers'
 
 class SignUp extends Component {
@@ -49,7 +49,12 @@ class SignUp extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return this.props.auth.authentication ? "Account created successfully" : (<SignUpForm onChange={ onChange.bind(this)} form={ this.state.form }/>)
+        return this.props.auth.authentication
+          ? "Account created successfully"
+          : (<SignUpForm
+              onChange={ onChange.bind(this)}
+              form={ this.state.form }
+            />)
       case 1:
         return 'What is an ad group anyways?';
       case 2:
@@ -62,7 +67,7 @@ class SignUp extends Component {
   render() {
     const {finished, stepIndex} = this.state;
     const contentStyle = {margin: '0 16px'};
-    
+
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>

@@ -10,10 +10,11 @@ import registerServiceWorker from './registerServiceWorker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import App from './containers/App';
-import Feed from './containers/Feed';
-import SignUp from './containers/SignUp';
 import Navbar from './containers/Navbar';
+import App from './containers/App';
+import SignUp from './containers/SignUp';
+import Login from './containers/Login';
+import Feed from './containers/Feed';
 
 import './style.css';
 import './styles.min.css';
@@ -38,6 +39,7 @@ ReactDOM.render(
           <Route strict path="/" component={App} />
             <Switch>
               <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/login" component={Login} />
               <Route exact path="/feed" component={Feed}/>
             </Switch>
         </div>
