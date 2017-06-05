@@ -1,25 +1,33 @@
-import { authAdapter } from '../adapters/authAdapter'
+import { userAdapter } from '../adapters/userAdapter'
 
 const ADD_AUTH = 'ADD_AUTH'
 const REMOVE_AUTH = 'REMOVE_AUTH'
 
 export const signUpUser = ( credentials ) => {
-  const response = authAdapter.signUpUser( credentials );
-
-  return {
-    type: ADD_AUTH,
-    payload: response
+  return function(dispatch) {
+    userAdapter.signUpUser( credentials )
+      .then(response => {
+        localStorage.setItem('token', response.token);
+        dispatch({ type: ADD_AUTH });
+        // browserHistory.push('/feed');
+      })
+      .catch(() => {
+        // dispatch(authError('Bad Login Info'));
+      });
   }
 }
 
 export const loginUser = ( credentials ) => {
-  const response = authAdapter.loginUser( credentials );
-
-  // Add thunk to add error message that email/ password does not match
-
-  return {
-    type: ADD_AUTH,
-    payload: response
+  return function(dispatch) {
+    userAdapter.loginUser( credentials )
+      .then(response => {
+        localStorage.setItem('token', response.token);
+        dispatch({ type: ADD_AUTH });
+        // browserHistory.push('/feed');
+      })
+      .catch(() => {
+        // dispatch(authError('Bad Login Info'));
+      });
   }
 }
 

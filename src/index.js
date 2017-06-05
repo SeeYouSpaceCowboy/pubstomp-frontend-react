@@ -14,6 +14,12 @@ import './styles.min.css';
 
 const store = createStore( rootReducer, applyMiddleware( reduxThunk ) );
 
+const token = localStorage.getItem('token');
+// If we have a token, consider the user to be signed in
+if (token) {
+  store.dispatch({ type: "ADD_AUTH" });
+}
+
 //the below function is required for material-ui to listen to click events
 injectTapEventPlugin();
 

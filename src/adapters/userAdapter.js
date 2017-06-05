@@ -4,13 +4,13 @@ export const userAdapter = {
 
   signUpUser: ( credentials ) => {
     return axios.post('/signup', credentials)
-      .then( response => response.data.data )
+      .then( response => response.data )
       .catch( err => console.error( err.message ) );
   },
 
   loginUser: ( credentials ) => {
     return axios.post('/login', credentials)
-      .then( response => response.data.data )
+      .then( response => response.data )
       .catch( err => console.error( err.message ) );
   },
 

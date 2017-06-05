@@ -29,7 +29,7 @@ class SignUp extends Component {
   handleNext = () => {
     const {stepIndex} = this.state;
 
-    if(stepIndex === 0 && !this.props.auth.authenticated) {
+    if(stepIndex === 0 && !this.props.auth.authentication) {
       this.props.actions.signUpUser( this.state.form )
     }
 
@@ -49,7 +49,7 @@ class SignUp extends Component {
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
-        return this.props.auth.authenticated ? "Account created successfully" : (<SignUpForm onChange={ onChange.bind(this)} form={ this.state.form }/>)
+        return this.props.auth.authentication ? "Account created successfully" : (<SignUpForm onChange={ onChange.bind(this)} form={ this.state.form }/>)
       case 1:
         return 'What is an ad group anyways?';
       case 2:
@@ -62,7 +62,7 @@ class SignUp extends Component {
   render() {
     const {finished, stepIndex} = this.state;
     const contentStyle = {margin: '0 16px'};
-
+    
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
@@ -85,7 +85,7 @@ class SignUp extends Component {
                 </p>
               ) : (
                 <div>
-                  <p>{this.getStepContent(stepIndex)}</p>
+                  <p>{this.getStepContent.call(this, stepIndex)}</p>
                   <div style={{marginTop: 12}}>
                     <FlatButton
                       label="Back"
