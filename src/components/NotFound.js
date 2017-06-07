@@ -1,11 +1,7 @@
 import React, { Component } from 'react'
-import { browserHistory } from 'react-router'
+import { Link } from 'react-router-dom'
 
 export default class NotFound extends Component {
-
-  handleClick() {
-    browserHistory.push('/')
-  }
 
   render(){
     return (
@@ -14,7 +10,7 @@ export default class NotFound extends Component {
         <h3>Page not found!</h3>
         <br/>
         <br/>
-        <a onClick={ this.handleClick }> Home </a>
+        <Link to='/'> Home </Link>
       </div>
     )
   }

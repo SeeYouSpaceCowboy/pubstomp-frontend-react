@@ -36,8 +36,8 @@ ReactDOM.render(
       <Router >
         <div>
           <Navbar />
-          <Route strict path="/" component={App} />
             <Switch>
+              <Route exact path="/" component={App} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/feed" component={Feed}/>
