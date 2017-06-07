@@ -32,8 +32,8 @@ class Navbar extends Component {
   loggedInUserDropDown() {
     return (
       <div>
-        <MenuItem primaryText="Logout" onClick={ onLogout.bind(this)} />
-        <MenuItem primaryText="Account Settings" />
+          <MenuItem value={5} primaryText="Logout" onClick={ onLogout.bind(this)} />
+          <MenuItem value={6} primaryText="Account Settings" />
       </div>
     )
   }
@@ -41,8 +41,8 @@ class Navbar extends Component {
   loggedOutUserDropDown() {
     return (
       <div>
-        <MenuItem primaryText="Login" onClick={ () => { this.props.history.push("/login") } } />
-        <MenuItem primaryText="Create Account" onClick={ () => { this.props.history.push("/signup") } } />
+          <MenuItem value={7} primaryText="Login" onClick={ () => { this.props.history.push("/login") } } />
+          <MenuItem value={8} primaryText="Create Account" onClick={ () => { this.props.history.push("/signup") } } />
       </div>
     )
   }
@@ -51,8 +51,8 @@ class Navbar extends Component {
     return (
       <Toolbar className="material-navbar">
         <ToolbarGroup firstChild={true}>
-          <DropDownMenu value={this.state.value} onChange={this.handleChange}>
-            <MenuItem value={1} primaryText="Home" />
+          <DropDownMenu value={this.state.value} onChange={this.handleChange} anchorOrigin={{vertical: 'bottom', horizontal: 'left'}}>
+            <MenuItem value={1} primaryText="Home" onClick={ () => { this.props.history.push("/") } } />
             <MenuItem value={2} primaryText="Games" />
             <MenuItem value={3} primaryText="Players" />
             <MenuItem value={4} disabled={true}>
@@ -66,7 +66,7 @@ class Navbar extends Component {
         <ToolbarGroup>
           <ToolbarTitle text="PubStomp" />
           <ToolbarSeparator />
-          <IconMenu
+          <IconMenu value={this.state.value} onChange={this.handleChange} anchorOrigin={{vertical: 'bottom', horizontal: 'right'}}
             iconButtonElement={
               <IconButton touch={true}>
                 <NavigationExpandMoreIcon />

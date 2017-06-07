@@ -36,6 +36,74 @@
   margin-top: 30px;
 }
 
+/* --------------------   Service Box    -------------------- */
+.serviceBox{
+    text-align:center;
+    padding-top: 30px;
+}
+.serviceBox .service-icon::before{
+    right: 79px;
+    top: 33px;
+}
+.serviceBox .service-icon::after {
+    left:79px;
+    top:33px;
+}
+.serviceBox .service-icon::before, .serviceBox .service-icon::after {
+    background: hsl(0, 0%, 100%) none repeat scroll 0 0;
+    border-bottom: 1px solid hsl(212, 16%, 61%);
+    border-top: 1px solid hsl(212, 16%, 61%);
+    content: " ";
+    height: 14px;
+    position: absolute;
+    transition: all 0.4s ease 0s;
+    width: 45px;
+}
+.serviceBox .service-icon {
+    background: hsl(0, 0%, 100%) none repeat scroll 0 0;
+    border: 1px solid hsl(212, 16%, 61%);
+    border-radius: 82px;
+    display: inline-block;
+    height: 82px;
+    line-height: 92px;
+    margin-bottom: 28px;
+    position: relative;
+    transition: all 0.4s ease 0s;
+    width: 82px;
+    text-align: center;
+}
+.serviceBox .service-icon i{
+    color: hsl(212, 16%, 61%);
+    font-size:22px;
+    transition: all 0.4s ease 0s;
+}
+.serviceBox .service-content h3 {
+    color:#dc005a;
+    font-size: 20px;
+    line-height: 1;
+    margin-bottom: 27px;
+    margin-top: 0;
+}
+.serviceBox .service-content p {
+    color: hsl(212, 16%, 61%);
+    font-size: 12.5px;
+    line-height: 25px;
+    margin: 0;
+    padding: 0 15px;
+    text-align: justify;
+}
+.serviceBox:hover .service-icon::before, .serviceBox:hover .service-icon::after, .serviceBox:hover .service-icon{
+    border-color: #dc005a;
+}
+.serviceBox:hover .service-icon i{
+    color: #dc005a;
+    transition: all 0.4s ease 0s;
+}
+@media only screen and (max-width: 990px){
+    .serviceBox{
+        margin-bottom: 20px;
+    }
+}
 
 /* --------------------   MISC/ GLOBAL   -------------------- */
 
