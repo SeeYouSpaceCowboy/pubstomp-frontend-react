@@ -6,6 +6,7 @@ import * as Actions from '../actions/index'
 import { Carousel } from 'react-bootstrap'
 import lol from '../img/lol.jpg'
 import overwatch from '../img/overwatch.jpg'
+import ServiceBox from '../components/ServiceBox'
 
 class App extends Component {
 
@@ -24,6 +25,7 @@ class App extends Component {
            <img width={1920} height={1080} alt="1920x1080" src={overwatch} />
          </Carousel.Item>
        </Carousel>
+       <ServiceBox />
       </div>
     )
   }
