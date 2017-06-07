@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
+
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import * as Actions from '../actions/index'
 
 import { Row, Col } from 'react-bootstrap'
-import {Step, Stepper, StepLabel} from 'material-ui/Stepper';
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
 
-import SignUpForm from '../components/Auth/SignUpForm'
+import SignUpForm from '../components/Forms/SignUpForm'
+import ProfileForm from '../components/Forms/ProfileForm'
+import GamesForm from '../components/Forms/GamesForm'
+import StepperComponent from '../components/SignUp/StepperComponent'
+import Steps from '../components/SignUp/Steps'
+
 import { onChange } from '../helpers/AuthHelpers'
 
 class SignUp extends Component {
-
   constructor() {
     super();
 
@@ -22,8 +24,19 @@ class SignUp extends Component {
       form: {
         email: '',
         password: ''
+      },
+      profileForm: {
+        username: '',
+        dob: null,
+        genderCount: 3,
+        gender: 'Secret'
       }
     };
+  }
+
+  componentWillMount() {
+    //iterate thru steps to find current step, if complete route to feed.
+
   }
 
   handleNext = () => {
@@ -50,63 +63,49 @@ class SignUp extends Component {
     switch (stepIndex) {
       case 0:
         return this.props.auth.authentication
-          ? "Account created successfully"
+          ? <p className='success-message'>Account was created successfully!</p>
           : (<SignUpForm
               onChange={ onChange.bind(this)}
               form={ this.state.form }
             />)
       case 1:
-        return 'What is an ad group anyways?';
+        return 'profile' in this.props.user
+        ? <p className='success-message'>Profile was created successfully!</p>
+        : (<ProfileForm
+            onChange={ onChange.bind(this)}
+            form={ this.state.form }
+          />)
       case 2:
-        return 'This is the bit I really care about!';
+        return 'games' in this.props.user
+        ? <p className='success-message'>Games were followed!</p>
+        : (<GamesForm
+            onChange={ onChange.bind(this)}
+            form={ this.state.form }
+          />)
       default:
-        return 'You\'re a long way from home sonny jim!';
+        return 'An error has occurred.';
     }
   }
 
   render() {
-    const {finished, stepIndex} = this.state;
-    const contentStyle = {margin: '0 16px'};
+    const { finished, stepIndex } = this.state;
+
+
 
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
-          <div style={{width: '100%', maxWidth: 700, margin: 'auto'}}>
-            <Stepper activeStep={stepIndex}>
-              <Step>
-                <StepLabel>Create Your Account</StepLabel>
-              </Step>
-              <Step>
-                <StepLabel>Choose 3 Games (or more!)</StepLabel>
-              </Step>
-              <Step>
-                <StepLabel>Pick An Avatar</StepLabel>
-              </Step>
-            </Stepper>
-            <div style={contentStyle}>
-              {finished ? (
-                <p>
-                  <a href="http://www.google.com"> Click here </a> to reset the example.
-                </p>
-              ) : (
-                <div>
-                  <p>{this.getStepContent.call(this, stepIndex)}</p>
-                  <div style={{marginTop: 12}}>
-                    <FlatButton
-                      label="Back"
-                      disabled={stepIndex === 0}
-                      onTouchTap={this.handlePrev}
-                      style={{marginRight: 12}}
-                    />
-                    <RaisedButton
-                      label={stepIndex === 2 ? 'Done!' : 'Next'}
-                      primary={true}
-                      onTouchTap={this.handleNext}
-                    />
-                  </div>
-                </div>
-              )}
-            </div>
+          <div className='signup-container'>
+            <StepperComponent activeStep={stepIndex} />
+
+            <Steps
+              finished={ finished }
+              stepIndex={ stepIndex }
+              getStepContent={ this.getStepContent.bind( this ) }
+              handlePrev={ this.handlePrev }
+              handleNext={ this.handleNext }
+            />
+
           </div>
         </Col>
       </Row>
