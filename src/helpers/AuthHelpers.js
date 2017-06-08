@@ -6,6 +6,24 @@ export function onChange( event ) {
   });
 }
 
+export function onProfileChange( event ) {
+  let profileForm = Object.assign( {}, this.state.profileForm, { [event.target.name]: event.target.value });
+
+  this.setState({profileForm})
+}
+
+export function handleGenderChange(event, index, value) {
+  let profileForm = Object.assign( {}, this.state.profileForm, { gender: value });
+
+  this.setState({profileForm})
+}
+
+export function handleDateChange(event, date) {
+  let profileForm = Object.assign( {}, this.state.profileForm, { dob: date });
+
+  this.setState({profileForm})
+}
+
 export function onLogout( event ) {
   event.preventDefault();
   this.props.actions.logoutUser();

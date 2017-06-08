@@ -8,6 +8,7 @@ export const signUpUser = ( credentials ) => {
   return function(dispatch) {
     authAdapter.signUpUser( credentials )
       .then(response => {
+        console.log(response)
         localStorage.setItem('token', response.token);
         dispatch({ type: ADD_AUTH });
       })
