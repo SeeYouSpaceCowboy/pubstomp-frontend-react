@@ -12,7 +12,7 @@ import GamesForm from '../components/Forms/GamesForm'
 import StepperComponent from '../components/SignUp/StepperComponent'
 import Steps from '../components/SignUp/Steps'
 
-import { onChange } from '../helpers/AuthHelpers'
+import { onChange, onProfileChange, handleGenderChange, handleDateChange } from '../helpers/AuthHelpers'
 
 class SignUp extends Component {
   constructor() {
@@ -28,8 +28,7 @@ class SignUp extends Component {
       profileForm: {
         username: '',
         dob: null,
-        genderCount: 3,
-        gender: 'Secret'
+        gender: "Secret"
       }
     };
   }
@@ -44,6 +43,10 @@ class SignUp extends Component {
 
     if(stepIndex === 0 && !this.props.auth.authentication) {
       this.props.actions.signUpUser( this.state.form )
+    }
+
+    if(stepIndex === 1 && this.props.auth.authentication) {
+      this.props.actions.submitProfile( this.state.profileForm )
     }
 
     this.setState({
@@ -72,15 +75,17 @@ class SignUp extends Component {
         return 'profile' in this.props.user
         ? <p className='success-message'>Profile was created successfully!</p>
         : (<ProfileForm
-            onChange={ onChange.bind(this)}
-            form={ this.state.form }
+            onChange={ onProfileChange.bind(this)}
+            form={ this.state.profileForm }
+            handleGenderChange={handleGenderChange.bind(this)}
+            handleDateChange={handleDateChange.bind(this)}
           />)
       case 2:
         return 'games' in this.props.user
         ? <p className='success-message'>Games were followed!</p>
         : (<GamesForm
             onChange={ onChange.bind(this)}
-            form={ this.state.form }
+            form={ this.state.gamesForm }
           />)
       default:
         return 'An error has occurred.';

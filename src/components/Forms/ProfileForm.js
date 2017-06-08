@@ -8,20 +8,7 @@ class ProfileForm extends Component {
 
   constructor() {
     super();
-
-    this.state = {
-      value: 3,
-      controlledDate: null
-    };
   }
-
-  handleGenderChange = (event, index, value) => this.setState({value});
-
-  handleDateChange = (event, date) => {
-    this.setState({
-      controlledDate: date,
-    });
-  };
 
   render() {
     return (
@@ -37,19 +24,19 @@ class ProfileForm extends Component {
           <DatePicker
             name="dob"
             hintText="Date of Birth"
-            value={this.state.controlledDate}
-            onChange={this.handleDateChange.bind(this)}
+            value={this.props.form.dob}
+            onChange={ this.props.handleDateChange }
             />
           <br />
           <SelectField
             name="gender"
             floatingLabelText="Gender"
-            value={this.state.value}
-            onChange={this.handleGenderChange}
+            value={this.props.form.gender}
+            onChange={ this.props.handleGenderChange }
             >
-            <MenuItem value={1} primaryText="Male" />
-            <MenuItem value={2} primaryText="Female" />
-            <MenuItem value={3} primaryText="Secret" />
+            <MenuItem value={"Male"} primaryText="Male" />
+            <MenuItem value={"Female"} primaryText="Female" />
+            <MenuItem value={"Secret"} primaryText="Secret" />
           </SelectField>
       </div>
     )

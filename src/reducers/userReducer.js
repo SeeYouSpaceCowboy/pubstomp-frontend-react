@@ -11,6 +11,9 @@ export default function userReducer(state={}, action){
     case 'UPDATE_USER':
       return {}
 
+    case 'SUBMIT_PROFILE':
+      return {...state.user, profile: action.payload}
+
     default:
       return state
   }
