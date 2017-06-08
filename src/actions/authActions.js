@@ -1,4 +1,4 @@
-import { userAdapter } from '../adapters/userAdapter'
+import { authAdapter } from '../adapters/authAdapter'
 
 const ADD_AUTH = 'ADD_AUTH'
 const REMOVE_AUTH = 'REMOVE_AUTH'
@@ -6,7 +6,7 @@ const AUTH_ERROR = 'AUTH_ERROR'
 
 export const signUpUser = ( credentials ) => {
   return function(dispatch) {
-    userAdapter.signUpUser( credentials )
+    authAdapter.signUpUser( credentials )
       .then(response => {
         localStorage.setItem('token', response.token);
         dispatch({ type: ADD_AUTH });
@@ -23,7 +23,7 @@ export const signUpUser = ( credentials ) => {
 export const loginUser = ( credentials ) => {
   const self = this;
   return function(dispatch) {
-    userAdapter.loginUser( credentials )
+    authAdapter.loginUser( credentials )
       .then(response => {
         localStorage.setItem('token', response.token);
         dispatch({ type: ADD_AUTH });
@@ -40,7 +40,7 @@ export const loginUser = ( credentials ) => {
 
 export const logoutUser = () => {
   localStorage.removeItem('token');
-  
+
   return {
     type: REMOVE_AUTH,
     payload: null

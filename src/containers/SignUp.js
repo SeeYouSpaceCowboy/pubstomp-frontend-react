@@ -97,7 +97,6 @@ class SignUp extends Component {
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
           <div className='signup-container'>
             <StepperComponent activeStep={stepIndex} />
-
             <Steps
               finished={ finished }
               stepIndex={ stepIndex }
@@ -105,7 +104,6 @@ class SignUp extends Component {
               handlePrev={ this.handlePrev }
               handleNext={ this.handleNext }
             />
-
           </div>
         </Col>
       </Row>
