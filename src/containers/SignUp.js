@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom';
 
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
@@ -36,7 +37,21 @@ class SignUp extends Component {
 
   componentWillMount() {
     //iterate thru steps to find current step, if complete route to feed.
+    let stepIndex = 0;
 
+    if ( this.props.auth.authentication ) {
+      stepIndex = 1;
+    }
+
+    if ( 'profile' in this.props.user ) {
+      stepIndex = 2;
+    }
+
+    if ( 'games' in this.props.user && this.props.user.games.length >= 2 ) {
+      this.props.history.push('/feed');
+    }
+
+    this.setState({ stepIndex: stepIndex });
   }
 
   handleNext = () => {
@@ -129,4 +144,4 @@ const mapDispatchToProps = ( dispatch ) => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)( SignUp )
+)( withRouter( SignUp ) )
