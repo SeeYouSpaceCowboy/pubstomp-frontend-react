@@ -92,7 +92,6 @@ class SignUp extends Component {
       default:
         console.error('An error has occurred determining step status.');
     };
-    console.log(finished)
     return finished;
   }
 
@@ -128,8 +127,6 @@ class SignUp extends Component {
 
   render() {
     const { stepIndex } = this.state;
-
-    console.log( this.props )
 
     return (
       <Row className="feed">
