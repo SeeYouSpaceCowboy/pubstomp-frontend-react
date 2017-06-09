@@ -2,7 +2,7 @@ import React from 'react';
 
 import {Step, Stepper, StepLabel} from 'material-ui/Stepper';
 
-const StepperComponent = ( props ) => {
+const StepperHeaderComponent = ( props ) => {
 
   return (
     <div>
@@ -21,4 +21,4 @@ const StepperComponent = ( props ) => {
   )
 }
 
-export default StepperComponent;
+export default StepperHeaderComponent;

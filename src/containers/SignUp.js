@@ -10,7 +10,7 @@ import { Row, Col } from 'react-bootstrap'
 import SignUpForm from '../components/Forms/SignUpForm'
 import ProfileForm from '../components/Forms/ProfileForm'
 import GamesForm from '../components/Forms/GamesForm'
-import StepperComponent from '../components/SignUp/StepperComponent'
+import StepperHeaderComponent from '../components/SignUp/StepperHeaderComponent'
 import Steps from '../components/SignUp/Steps'
 
 import { onChange, onProfileChange, handleGenderChange, handleDateChange } from '../helpers/AuthHelpers'
@@ -77,6 +77,25 @@ class SignUp extends Component {
     }
   };
 
+  completedCurrentStep( stepIndex ) {
+    let finished = false
+    switch ( stepIndex ) {
+      case 0:
+        finished = this.props.auth.authentication;
+        break;
+      case 1:
+        finished = 'profile' in this.props.user;
+        break;
+      case 2:
+        finished = 'games' in this.props.user;
+        break;
+      default:
+        console.error('An error has occurred determining step status.');
+    };
+    console.log(finished)
+    return finished;
+  }
+
   getStepContent(stepIndex) {
     switch (stepIndex) {
       case 0:
@@ -108,18 +127,18 @@ class SignUp extends Component {
   }
 
   render() {
-    const { finished, stepIndex } = this.state;
+    const { stepIndex } = this.state;
 
-
+    console.log( this.props )
 
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
           <div className='signup-container'>
-            <StepperComponent activeStep={stepIndex} />
+            <StepperHeaderComponent activeStep={stepIndex} />
             <Steps
-              finished={ finished }
               stepIndex={ stepIndex }
+              finished={ this.completedCurrentStep.call(this, stepIndex) }
               getStepContent={ this.getStepContent.bind( this ) }
               handlePrev={ this.handlePrev }
               handleNext={ this.handleNext }
