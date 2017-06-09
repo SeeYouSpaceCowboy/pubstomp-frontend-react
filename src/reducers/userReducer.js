@@ -5,14 +5,15 @@ export default function userReducer(state={}, action){
     case 'FETCH_USER':
       return action.payload
 
+    case 'ADD_PROFILE':
+      return {...state.user, profile: action.payload}
+      
     case 'REMOVE_USER':
       return {}
 
     case 'UPDATE_USER':
       return {}
 
-    case 'SUBMIT_PROFILE':
-      return {...state.user, profile: action.payload}
 
     default:
       return state
