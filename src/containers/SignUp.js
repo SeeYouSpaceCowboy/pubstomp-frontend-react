@@ -37,6 +37,7 @@ class SignUp extends Component {
   componentWillMount() {
     //iterate thru steps to find current step, if complete route to feed.
     let stepIndex = 0;
+    console.log(this.props)
 
     if ( this.props.auth.authentication ) {
       stepIndex = 1;
@@ -127,6 +128,7 @@ class SignUp extends Component {
 
   render() {
     const { stepIndex } = this.state;
+    console.log(this.props)
 
     return (
       <Row className="feed">

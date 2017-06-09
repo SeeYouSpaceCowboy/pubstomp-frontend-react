@@ -6,8 +6,8 @@ export default function userReducer(state={}, action){
       return action.payload
 
     case 'ADD_PROFILE':
-      return {...state.user, profile: action.payload}
-      
+      return {...state.user, email: action.payload.email, profile: action.payload.profile}
+
     case 'REMOVE_USER':
       return {}
 
