@@ -6,7 +6,7 @@ class GamesForm extends Component {
   render() {
     return (
       <div>
-          <p className='success-message'>This feature is coming soon.</p>
+        <p className='success-message'>This feature is coming soon.</p>
       </div>
     )
   }
