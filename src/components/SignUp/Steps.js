@@ -1,35 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
+import Step from './Step'
 
 const Steps = ( props ) => {
 
+  let signupComplete = props.stepIndex > 2;
+  let signupCompleteMessage = (
+    <p className='success-message'>
+      You are all finished. <Link to="/feed">Click here to see your feed</Link>
+    </p>);
+
   return (
     <div className='step-container'>
-
-      { props.finished ? (
-        <p className='success-message'>You are all finished. <Link to="/feed">Click here to see your feed</Link></p>
-      ) : (
-        <div>
-          <div>{ props.getStepContent(props.stepIndex) }</div>
-
-          <div className='step-buttons-container'>
-            <FlatButton
-              label="Back"
-              disabled={props.stepIndex === 0}
-              onTouchTap={props.handlePrev}
-              style={{marginRight: 12}}
-            />
-            <RaisedButton
-              label={props.stepIndex === 2 ? 'Finish!' : 'Submit'}
-              primary={true}
-              onTouchTap={props.handleNext}
-            />
-          </div>
-        </div>
-      )}
+      { signupComplete ?
+        { signupCompleteMessage }
+        : (<Step
+            stepIndex={ props.stepIndex }
+            finished={ props.finished }
+            getStepContent={ props.getStepContent }
+            handlePrev={ props.handlePrev }
+            handleNext={ props.handleNext }
+          />)
+      }
 
     </div>
   )

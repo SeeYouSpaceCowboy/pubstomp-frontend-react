@@ -6,10 +6,6 @@ import DatePicker from 'material-ui/DatePicker';
 
 class ProfileForm extends Component {
 
-  constructor() {
-    super();
-  }
-
   render() {
     return (
       <div>
