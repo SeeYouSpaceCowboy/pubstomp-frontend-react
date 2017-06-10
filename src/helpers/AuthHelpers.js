@@ -12,6 +12,13 @@ export function onProfileChange( event ) {
   this.setState({profileForm})
 }
 
+export function onGameChange( event ) {
+  let array = Array.from(event)
+  let gamesForm = Object.assign( {}, this.state.gamesForm, { selectedGames: array });
+
+  this.setState({gamesForm})
+}
+
 export function handleGenderChange(event, index, value) {
   let profileForm = Object.assign( {}, this.state.profileForm, { gender: value });
 

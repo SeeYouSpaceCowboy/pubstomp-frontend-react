@@ -13,12 +13,11 @@ import Checkbox from 'material-ui/Checkbox';
 class GamesForm extends Component {
   constructor() {
     super();
-
     this.state = {
-      elementsArr: []
+      elementsArr: [],
+      selectedGames: new Set()
     }
   }
-
   getGamesList() {
     var elements = []
     let url = 'https://api.twitch.tv/kraken/games/top?limit=20&client_id=5tomyl16m18fgl444stt7mqf5np03x'
@@ -26,7 +25,7 @@ class GamesForm extends Component {
         .then( response => {
           let gamesList = response.data.top
           for( let i = 0; i < response.data.top.length; i++) {
-            elements.push([gamesList[i].game.name,gamesList[i].game.box.medium])
+            elements.push([gamesList[i].game.name,gamesList[i].game.box.medium, gamesList[i].game._id])
             }
             this.setState({elementsArr: elements})
           })
@@ -55,19 +54,31 @@ class GamesForm extends Component {
       }
     }
 
+    toggleFavorite(id) {
+      if(this.state.selectedGames.has(id)) {
+        this.state.selectedGames.delete(id)
+      } else {
+        this.state.selectedGames.add(id)
+      }
+    }
+
     gamesRows() {
       let rows = this.state.elementsArr.map((currElement, index) => {
         return (
           <div>
-
           <Col className="gamelist" key={index} sm={2} smOffset={this.getOffSet(index)}>
             <Card>
               <CardMedia>
                 <img src={this.state.elementsArr[index][1]} alt='hi'/>
               </CardMedia>
               <CardActions>
-                <div className="gamelist-checkbox">
+                <div className="gamelist-checkbox" >
                   <Checkbox style={{ display: "flex"}}
+                    onCheck={() => {
+                      this.toggleFavorite(this.state.elementsArr[index][2])
+                      this.props.onChange(this.state.selectedGames)
+                    }}
+                    id={this.state.elementsArr[index][2]}
                     disableTouchRipple
                     disableFocusRipple
                     checkedIcon={<ActionFavorite />}
