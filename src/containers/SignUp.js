@@ -13,7 +13,7 @@ import GamesForm from '../components/Forms/GamesForm'
 import StepperHeaderComponent from '../components/SignUp/StepperHeaderComponent'
 import Steps from '../components/SignUp/Steps'
 
-import { onChange, onProfileChange, handleGenderChange, handleDateChange } from '../helpers/AuthHelpers'
+import { onChange, onProfileChange, onGameChange, handleGenderChange, handleDateChange } from '../helpers/AuthHelpers'
 
 class SignUp extends Component {
   constructor() {
@@ -30,6 +30,9 @@ class SignUp extends Component {
         username: '',
         dob: null,
         gender: "Secret"
+      },
+      gamesForm: {
+        selectedGames: [],
       }
     };
   }
@@ -37,7 +40,6 @@ class SignUp extends Component {
   componentWillMount() {
     //iterate thru steps to find current step, if complete route to feed.
     let stepIndex = 0;
-    console.log(this.props)
 
     if ( this.props.auth.authentication ) {
       stepIndex = 1;
@@ -56,7 +58,7 @@ class SignUp extends Component {
 
   handleNext = () => {
     const {stepIndex} = this.state;
-
+    console.log(this.state)
     if(stepIndex === 0 && !this.props.auth.authentication) {
       this.props.actions.signUpUser( this.state.form )
     }
@@ -118,8 +120,8 @@ class SignUp extends Component {
         return 'games' in this.props.user
         ? <p className='success-message'>Games were followed!</p>
         : (<GamesForm
-            onChange={ onChange.bind(this)}
-            form={ this.state.gamesForm }
+            onChange={ onGameChange.bind(this)}
+            form={ this.state.games }
           />)
       default:
         return 'An error has occurred.';
@@ -128,8 +130,6 @@ class SignUp extends Component {
 
   render() {
     const { stepIndex } = this.state;
-    console.log(this.props)
-
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
