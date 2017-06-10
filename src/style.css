@@ -36,6 +36,16 @@
   margin-top: 30px;
 }
 
+.gamelist  {
+  justify-content: center;
+  padding: 10px 10px;
+}
+
+.gamelist-checkbox  {
+  display: inline-block;
+}
+
+
 /* --------------------   Service Box    -------------------- */
 .serviceBox{
     text-align:center;
