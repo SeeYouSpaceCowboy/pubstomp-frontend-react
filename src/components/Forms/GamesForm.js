@@ -11,11 +11,11 @@ import Checkbox from 'material-ui/Checkbox';
 // import TextField from 'material-ui/TextField'
 
 class GamesForm extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       elementsArr: [],
-      selectedGames: new Set()
+      selectedGames: props.selectedGames
     }
   }
   getGamesList() {
@@ -55,10 +55,11 @@ class GamesForm extends Component {
     }
 
     toggleFavorite(id) {
-      if(this.state.selectedGames.has(id)) {
-        this.state.selectedGames.delete(id)
+      if (id.toString() in (this.state.selectedGames)) {
+        delete this.state.selectedGames[id.toString()]
       } else {
-        this.state.selectedGames.add(id)
+        //refactor 
+          this.state.selectedGames[id.toString()] = id
       }
     }
 
@@ -74,6 +75,7 @@ class GamesForm extends Component {
               <CardActions>
                 <div className="gamelist-checkbox" >
                   <Checkbox style={{ display: "flex"}}
+                    checked={this.state.elementsArr[index][2] in this.state.selectedGames ? true : false}
                     onCheck={() => {
                       this.toggleFavorite(this.state.elementsArr[index][2])
                       this.props.onChange(this.state.selectedGames)
