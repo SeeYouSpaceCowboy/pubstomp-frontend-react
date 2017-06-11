@@ -4,6 +4,6 @@ import * as userActions from './userActions'
 export const signUpUser = ( credentials ) => authActions.signUpUser( credentials )
 export const loginUser = ( credentials ) => authActions.loginUser( credentials )
 export const logoutUser = ( ) => authActions.logoutUser()
-
+export const updateGames = ( form ) => userActions.updateGames( form )
 export const submitProfile = ( form ) => userActions.submitProfile( form )
 export const fetchUser = () => userActions.fetchUser()

@@ -7,6 +7,11 @@ export const userAdapter = {
       .then( response => response.data.user )
       .catch( err => console.error( err.message ) );
   },
+  updateGames: ( form ) => {
+    return axios.post('/games', form)
+      .then( response => response.data.user )
+      .catch( err => console.error( err.message ) );
+  },
   fetchUser: () => {
     return axios.get('/fetchUser')
       .then( response => response.data.user )

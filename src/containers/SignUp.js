@@ -58,13 +58,16 @@ class SignUp extends Component {
 
   handleNext = () => {
     const {stepIndex} = this.state;
-    console.log(this.state)
     if(stepIndex === 0 && !this.props.auth.authentication) {
       this.props.actions.signUpUser( this.state.form )
     }
 
     if(stepIndex === 1 && this.props.auth.authentication) {
       this.props.actions.submitProfile( this.state.profileForm )
+    }
+    
+    if(stepIndex === 2 && this.props.auth.authentication) {
+      this.props.actions.updateGames( this.state.gamesForm )
     }
 
     this.setState({
