@@ -32,7 +32,7 @@ class SignUp extends Component {
         gender: "Secret"
       },
       gamesForm: {
-        selectedGames: [],
+        selectedGames: {},
       }
     };
   }
@@ -120,6 +120,7 @@ class SignUp extends Component {
         return 'games' in this.props.user
         ? <p className='success-message'>Games were followed!</p>
         : (<GamesForm
+            selectedGames={this.state.gamesForm.selectedGames}
             onChange={ onGameChange.bind(this)}
             form={ this.state.games }
           />)
