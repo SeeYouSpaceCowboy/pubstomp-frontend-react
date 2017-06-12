@@ -65,7 +65,7 @@ class SignUp extends Component {
     if(stepIndex === 1 && this.props.auth.authentication) {
       this.props.actions.submitProfile( this.state.profileForm )
     }
-    
+
     if(stepIndex === 2 && this.props.auth.authentication) {
       this.props.actions.updateGames( this.state.gamesForm )
     }
