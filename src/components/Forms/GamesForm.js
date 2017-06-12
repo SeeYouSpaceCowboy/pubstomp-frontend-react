@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Row, Col } from 'react-bootstrap'
+import { Col } from 'react-bootstrap'
 import {Card, CardActions, CardMedia} from 'material-ui/Card';
 import CircularProgress from 'material-ui/CircularProgress';
 import ActionFavorite from 'material-ui/svg-icons/action/favorite';
@@ -47,39 +47,33 @@ class GamesForm extends Component {
     }
 
     getOffSet(index) {
-      if(index === 0 || index % 5 === 0) {
-        return 1
-      } else {
-        return 0
+      return index === 0 || index % 5 === 0 ? 1 : 0
       }
-    }
 
     toggleFavorite(id) {
-      if (id.toString() in (this.state.selectedGames)) {
+      if (id.toString() in (this.props.selectedGames)) {
         delete this.state.selectedGames[id.toString()]
+        this.props.onChange({...this.state.selectedGames, [id.toString()]: id})
       } else {
-        //refactor 
-          this.state.selectedGames[id.toString()] = id
+        this.props.onChange({...this.state.selectedGames, [id.toString()]: id})
       }
     }
 
     gamesRows() {
       let rows = this.state.elementsArr.map((currElement, index) => {
         return (
-          <div>
-          <Col className="gamelist" key={index} sm={2} smOffset={this.getOffSet(index)}>
-            <Card>
+          <div key={index}>
+          <Col className="gamelist" sm={2} smOffset={this.getOffSet(index)}>
+            <Card onClick={() => {
+              this.props.onChange(this.state.elementsArr[index][2])
+            }}>
               <CardMedia>
                 <img src={this.state.elementsArr[index][1]} alt='hi'/>
               </CardMedia>
               <CardActions>
                 <div className="gamelist-checkbox" >
                   <Checkbox style={{ display: "flex"}}
-                    checked={this.state.elementsArr[index][2] in this.state.selectedGames ? true : false}
-                    onCheck={() => {
-                      this.toggleFavorite(this.state.elementsArr[index][2])
-                      this.props.onChange(this.state.selectedGames)
-                    }}
+                    checked={this.state.elementsArr[index][2] in this.props.selectedGames ? true : false}
                     id={this.state.elementsArr[index][2]}
                     disableTouchRipple
                     disableFocusRipple
@@ -100,8 +94,8 @@ class GamesForm extends Component {
       <div>
         <p className='success-message'>Select Your Games!</p>
           {this.state.elementsArr.length === 0 ? this.spinner() : null}
-            {this.printGamesList()}
-            {this.gamesRows()}
+          {this.state.elementsArr.length === 0  ? this.printGamesList() : null}
+          {this.gamesRows()}
       </div>
     )
   }

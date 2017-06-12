@@ -12,9 +12,21 @@ export function onProfileChange( event ) {
   this.setState({profileForm})
 }
 
-export function onGameChange( event ) {
-  this.setState({gamesForm: {selectedGames: event }})
-}
+export function onGameChange( id ) {
+    if (id.toString() in (this.state.gamesForm.selectedGames)) {
+      let selectedGames = {}
+      for(let key in this.state.gamesForm.selectedGames) {
+          if(key !== id.toString()) {
+            selectedGames[key]= this.state.gamesForm.selectedGames[key]
+          }
+        }
+      this.setState({gamesForm: {selectedGames}})
+    } else {
+      this.setState({gamesForm: {selectedGames: {...this.state.gamesForm.selectedGames, [id.toString()]: id} }})
+    }
+  }
+
+
 
 export function handleGenderChange(event, index, value) {
   let profileForm = Object.assign( {}, this.state.profileForm, { gender: value });
