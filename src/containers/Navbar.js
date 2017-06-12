@@ -25,7 +25,6 @@ class Navbar extends Component {
 
   componentWillMount() {
     if ( this.props.auth.authentication ) {
-      console.log('fetching user')
       this.props.actions.fetchUser();
     }
   }

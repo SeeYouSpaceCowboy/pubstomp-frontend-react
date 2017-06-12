@@ -111,7 +111,7 @@ class SignUp extends Component {
               form={ this.state.form }
             />)
       case 1:
-        return 'profile' in this.props.user
+        return 'profile' in this.props.user && this.props.user.profile
         ? <p className='success-message'>Profile was created successfully!</p>
         : (<ProfileForm
             onChange={ onProfileChange.bind(this)}
@@ -134,6 +134,7 @@ class SignUp extends Component {
 
   render() {
     const { stepIndex } = this.state;
+    console.log( this.props )
     return (
       <Row className="feed">
         <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
