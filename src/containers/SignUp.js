@@ -137,7 +137,7 @@ class SignUp extends Component {
     console.log( this.props )
     return (
       <Row className="feed">
-        <Col xs={10} sm={8} md={8} lg={8} xsOffset={1} smOffset={2} mdOffset={2} lgOffset={2}>
+        <Col xs={10} sm={10} md={10} lg={10} xsOffset={1} smOffset={1} mdOffset={1} lgOffset={1}>
           <div className='signup-container'>
             <StepperHeaderComponent activeStep={stepIndex} />
             <Steps
