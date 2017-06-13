@@ -16,8 +16,10 @@ import SignUp from './containers/SignUp';
 import Login from './containers/Login';
 import Feed from './containers/Feed';
 
-import './style.css';
-import './styles.min.css';
+import './stylesheets/slick.css';
+import './stylesheets/slick-theme.css';
+import './stylesheets/style.css';
+import './stylesheets/styles.min.css';
 
 const store = createStore( rootReducer, applyMiddleware( reduxThunk ) );
 
